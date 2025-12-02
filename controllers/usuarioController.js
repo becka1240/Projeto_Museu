@@ -64,7 +64,7 @@ class UsuarioController{
     
     static loginGetUsuario(req,res){
         const status = req.query.s;
-        res.render("usuario/loginUsuario",{status});
+        res.render("usuario/login",{status});
     }
 
     static async loginPostUsuario(req,res){
