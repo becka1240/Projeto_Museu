@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <br><br>
+    <div class="container">
+    <h1><%=funcionario._id?"Atualizar Funcionario":"Cadastrar Funcionario"%></h1>
+    <form action="<%=funcionario._id?"/funcionarios/atualizar":"/funcionarios"%>" method="post">
+        <input type="hidden" name="_id" value="<%=funcionario._id%>">
+        <div>
+            <label class="form-label">Verificação:</label><br>
+            <input type="number" class="form-control" name="verificacao" value="<%=funcionario.verificacao%>" required>
+        </div>
+        <div>
+            <label class="form-label">Nome:</label><br>
+            <input type="text" class="form-control" name="nome" value="<%=funcionario.nome%>" required>
+        </div>
+        <div>
+            <label class="form-label">Função:</label><br>
+            <input type="text" class="form-control" name="funcao" value="<%=funcionario.funcao%>" required><br>
+        </div>
+        <div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+    <a href="/" class="btn btn-success">Voltar</a>
+    </div>
+    <br><br>
+    </div>
+    <%- include("../partials/rodape.ejs") %>
+</body>
+</html>

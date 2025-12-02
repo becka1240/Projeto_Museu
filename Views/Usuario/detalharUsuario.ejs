@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <br><br>
+    <div class="container">
+    <% if (usuario) { %>
+        <div>
+            <b>Nome:</b> <%= usuario.nome %>
+        </div>
+        <div>
+            <b>Email:</b> <%= usuario.email %>
+        </div>
+        <div>
+            <b>Senha:</b> <%= usuario.senha%>
+        </div>
+    <% } else { %>
+        <h2>Usuário não encontrada</h2>
+    <% } %>
+    <br>
+    <a href="/usuarios" class="btn btn-success">Voltar</a>
+    </div>
+    <%- include("../partials/rodape.ejs") %>
+ 
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <br><br>
+    <div class="container">
+    <% if (status=="1") { %>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            Cadastrado com <b>sucesso.</b>
+        </div>
+   <% } %>
+   <% if (status=="2") { %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="submit" class="btn-close" data-bs-dismiss="alert"  ></button>
+        Excluido com <b>sucesso</b>
+    </div>
+   <% } %>
+   <% if (status=="3") { %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="submit" class="btn-close" data-bs-dismiss="alert"  ></button>
+        Atualizado com <b>sucesso</b>
+    </div>
+   <% } %>
+
+   <a href="/obras/cadastrarObra" class="btn btn-success">Cadastrar</a>
+   <h2>Relatório de Obras</h2>
+    <%- include("../partials/rodape.ejs") %>
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Identificação</th>
+            <th>Nome</th>
+            <th>Autor</th>
+            <th>Detalhar</th>
+            <th>Excluir</th>
+            <th>Atualizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% obras.forEach(function(obra) { %>
+            <tr>
+              <td><%= obra.identificacao %></td>
+              <td><%= obra.nome %></td>
+              <td><%= obra.autor %></td>
+              <td><a href= "/obras/<%= obra.identificacao%>"  class="btn btn-info">Detalhar</a></td>
+              <td><a href= "/obras/excluir/<%= obra.identificacao%>"  onclick="return confirm ('Deseja realmente excluir?')"  class="btn btn-danger">Excluir</a></td>
+              <td><a href= "/obras/atualizar/<%= obra.identificacao%>"  class="btn btn-warning">Atualizar</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <a href="/" class="btn btn-success">Voltar</a>
+
+      
+      
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crachá</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <br><br>
+    <div class="container">
+    <% if ( funcionario ) { %>
+        <div>
+            <b>Verificação:</b> <%= funcionario.verificacao%>
+        </div>
+        <div>
+            <b>Nome:</b> <%= funcionario.nome %>
+        </div>
+        <div>
+            <b>Função:</b> <%= funcionario.funcao %>
+        </div>
+    <% } else { %>
+        <h2>Funcionário não encontrado</h2>
+    <% } %>
+    <br>
+    <a href="/funcionarios" class="btn btn-success">Voltar</a>
+    </div>
+    <%- include("../partials/rodape.ejs") %>
+ 
+</body>
+</html>

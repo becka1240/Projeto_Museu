@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <br><br>
+    <div class="container">
+    <% if (status=="1") { %>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            Cadastrado com <b>sucesso.</b>
+        </div>
+   <% } %>
+   <% if (status=="2") { %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="submit" class="btn-close" data-bs-dismiss="alert"  ></button>
+        Excluido com <b>sucesso</b>
+    </div>
+   <% } %>
+   <% if (status=="3") { %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="submit" class="btn-close" data-bs-dismiss="alert"  ></button>
+        Atualizado com <b>sucesso</b>
+    </div>
+   <% } %>
+   <a href="/funcionarios/cadastrarFuncionario" class="btn btn-success">Cadastrar</a>
+   <h2>Relatório de Funcionários</h2>
+    <%- include("../partials/rodape.ejs") %>
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Verificação</th>
+            <th>Nome</th>
+            <th>Função</th>
+            <th>Detalhar</th>
+            <th>Excluir</th>
+            <th>Atualizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% funcionarios.forEach(function(funcionario) { %>
+            <tr>
+              <td><%= funcionario.verificacao %></td>
+              <td><%= funcionario.nome %></td>
+              <td><%= funcionario.funcao %></td>
+              <td><a href= "/funcionarios/<%= funcionario.verificacao%>"  class="btn btn-info">Detalhar</a></td>
+              <td><a href= "/funcionarios/excluir/<%= funcionario.verificacao%>" onclick="return confirm ('Deseja realmente excluir?')" class="btn btn-danger">Excluir</a></td>
+              <td><a href= "/funcionarios/atualizar/<%= funcionario.verificacao%>" class="btn btn-warning">Atualizar</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <a href="/" class="btn btn-success">Voltar</a>
+
+      
+      
+</body>
+</html>
